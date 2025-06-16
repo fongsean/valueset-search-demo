@@ -4,8 +4,7 @@ export function isCanonicalValueSetUrl(url: string): boolean {
     const parsed = new URL(baseUrl);
 
     return (
-      (parsed.protocol === 'http:' || parsed.protocol === 'https:') &&
-      /\/ValueSet(\/|$)/.test(parsed.pathname)
+      (parsed.protocol === 'http:' || parsed.protocol === 'https:')
     );
   } catch {
     return false;
