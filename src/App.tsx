@@ -13,6 +13,8 @@ function App() {
   const [valueSetUrl, setValueSetUrl] = useState('http://hl7.org/fhir/ValueSet/observation-status');
   const [debouncedValueSetUrl] = useDebounce(valueSetUrl, 200);
 
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+
   const inputIsValid = isCanonicalValueSetUrl(valueSetUrl);
 
   const { valueSet, valueSetUrlIsValid, itemControl } = useVerifyValueSetUrl(
@@ -79,8 +81,35 @@ function App() {
         </div>
       </section>
 
-      <section style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '40px' }}>
+      <section style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '15px' }}>
         <BaseRenderer />
+      </section>
+
+      <section
+        style={{
+          border: '1px solid #ccc',
+          padding: '8px',
+          marginBottom: '40px'
+        }}>
+        <button
+          style={{ cursor: 'pointer' }}
+          onClick={() => setShowQuestionnaire(!showQuestionnaire)}>
+          {showQuestionnaire ? 'Collapse ▲' : 'Show Questionnaire JSON ▼'}
+        </button>
+
+        {showQuestionnaire ? (
+          <pre
+            style={{
+              marginTop: '8px',
+              background: '#f5f5f5',
+              padding: '10px',
+              overflowX: 'auto'
+            }}>
+            <code>
+              <>{JSON.stringify(questionnaire, null, 2)}</>
+            </code>
+          </pre>
+        ) : null}
       </section>
 
       <section>
