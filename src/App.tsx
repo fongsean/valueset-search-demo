@@ -38,7 +38,9 @@ function App() {
   return (
     <>
       <h1>ValueSet Search Demo</h1>
-      <section>
+
+      <section style={{ marginBottom: '35px' }}>
+        <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>Inputs</div>
         <div style={{ marginBottom: '10px' }}>
           <label>
             Terminology server URL:{' '}
@@ -64,7 +66,7 @@ function App() {
           </label>
         </div>
 
-        <div style={{ display: 'flex', marginBottom: '20px' }}>
+        <div style={{ display: 'flex' }}>
           <button
             disabled={!valueSetUrlIsValid}
             style={{ cursor: valueSetUrlIsValid ? 'pointer' : 'not-allowed', marginRight: '8px' }}
@@ -81,21 +83,26 @@ function App() {
         </div>
       </section>
 
-      <section style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '15px' }}>
-        <BaseRenderer />
+      <section style={{ marginBottom: '35px' }}>
+        <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>Renderer</div>
+        <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+          <BaseRenderer />
+        </div>
       </section>
 
-      <section
-        style={{
-          border: '1px solid #ccc',
-          padding: '8px',
-          marginBottom: '40px'
-        }}>
-        <button
-          style={{ cursor: 'pointer' }}
-          onClick={() => setShowQuestionnaire(!showQuestionnaire)}>
-          {showQuestionnaire ? 'Collapse ▲' : 'Show Questionnaire JSON ▼'}
-        </button>
+      <section style={{ marginBottom: '35px' }}>
+        <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>Questionnaire definition</div>
+        <div
+          style={{
+            border: '1px solid #ccc',
+            padding: '8px'
+          }}>
+          <button
+            style={{ cursor: 'pointer' }}
+            onClick={() => setShowQuestionnaire(!showQuestionnaire)}>
+            {showQuestionnaire ? 'Collapse ▲' : 'Show Questionnaire JSON ▼'}
+          </button>
+        </div>
 
         {showQuestionnaire ? (
           <pre
@@ -113,9 +120,7 @@ function App() {
       </section>
 
       <section>
-        <div style={{ textDecoration: 'underline', marginBottom: '8px' }}>
-          ValueSet URL suggestions:
-        </div>
+        <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>ValueSet URL suggestions:</div>
         <ol>
           {[
             'http://hl7.org/fhir/ValueSet/observation-status',
